@@ -30,10 +30,10 @@ function toggleMusic() {
     }
 }
 
-// --- 3. STORY DATA: "Aldar Köse’s Clever Adventure (Extended)" ---
+// --- 3. STORY DATA: "Aldar Kose’s Clever Adventure (Extended)" ---
 const story = {
     start: {
-        text: "On a scorching day, Aldar Köse wandered across the endless Kazakh steppe. His torn robe fluttered in the wind, and his horse, Shubar, snorted wearily. In the distance, smoke rose from a wealthy bay’s village. Aldar chuckled: 'Hmm, time to teach another greedy man a lesson!' What should Aldar do first?",
+        text: "On a scorching day, Aldar Kose wandered across the endless Kazakh steppe. His torn robe fluttered in the wind, and his horse, Shubar, snorted wearily. In the distance, smoke rose from a wealthy bay’s village. Aldar chuckled: 'Hmm, time to teach another greedy man a lesson!' What should Aldar do first?",
         image: "images/steppe.png",
         options: [
             { text: "Ride to the bay’s aul (village) and ask for shelter", nextScene: "bayHouse", isError: false },
@@ -140,7 +140,7 @@ const story = {
     },
 
     happyEnd: {
-        text: "Aldar fooled the bay, earned money at the bazaar, and shared his wealth with poor villagers. Children followed him, laughing and calling: 'Tell us another story, clever Aldar Köse!' And he did, smiling under the bright steppe sky.",
+        text: "Aldar fooled the bay, earned money at the bazaar, and shared his wealth with poor villagers. Children followed him, laughing and calling: 'Tell us another story, clever Aldar Kose!' And he did, smiling under the bright steppe sky.",
         image: "images/aul_celebration.png",
         options: []
     },
