@@ -135,49 +135,49 @@ const story = {
 
     steppeEscape: {
         text: "Aldar rode freely through the steppe, the wind in his beard and laughter in his heart. 'That’ll teach the greedy ones!' he said. But deep down, he also remembered the shepherd’s words — wisdom is better than gold.",
-        image: "steppe_ride.jpg",
+        image: "images/steppe_ride.png",
         options: []
     },
 
     happyEnd: {
         text: "Aldar fooled the bay, earned money at the bazaar, and shared his wealth with poor villagers. Children followed him, laughing and calling: 'Tell us another story, clever Aldar Köse!' And he did, smiling under the bright steppe sky.",
-        image: "aul_celebration.jpg",
+        image: "images/aul_celebration.png",
         options: []
     },
 
     end_foolish: {
         text: "Aldar bought too many sweets and fell asleep under a tree. When he woke, foxes had eaten everything — even his new boots! He sighed: 'Even tricksters must learn moderation.'",
-        image: "tree_sleep.jpg",
+        image: "images/tree_sleep.png",
         options: []
     },
 
     end_caught: {
         text: "The bay’s men caught Aldar and brought him back. The bay took his gold. But Aldar just grinned: 'You can take my coins, but not my cleverness!' He was thrown out, already planning his next trick.",
-        image: "caught.jpg",
+        image: "images/caught.png",
         options: []
     },
 
     end_truth: {
         text: "Aldar told the bay the truth — that greed blinds men. Surprisingly, the bay laughed and said: 'You’re right. Keep your sheep and my respect.' Aldar left smiling — sometimes honesty wins too.",
-        image: "truth.jpg",
+        image: "images/truth.png",
         options: []
     },
 
     end_karma: {
         text: "Aldar mocked the bay too much, boasting of his cleverness. But while laughing, he slipped into a stream and soaked all his gold coins! He groaned, 'Perhaps even wit needs humility.'",
-        image: "stream.jpg",
+        image: "images/stream.png",
         options: []
     },
 
     end_sleep: {
         text: "Aldar fell asleep in the heat of the sun. When he awoke, Shubar had wandered off! He shook his head: 'That’s what laziness brings!' and started walking barefoot through the sand.",
-        image: "sleep_steppe.jpg",
+        image: "images/sleep_steppe.png",
         options: []
     },
 
     end_skip: {
         text: "Aldar passed the village without doing anything. The day was wasted, and the bay remained just as greedy. 'What a boring story that would be,' Aldar sighed.",
-        image: "empty_steppe.jpg",
+        image: "images/empty_steppe.png",
         options: []
     }
 };
