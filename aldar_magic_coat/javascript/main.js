@@ -46,7 +46,7 @@ const story = {
     observe: {
         text:
             "Aldar hides behind a dune and watches. The bai’s horse is strong and fast; the fur coat looks warm. An idea sparks in Aldar’s mind.",
-        image: "dune_watch.jpg",
+        image: "images/dune_watch.png",
         options: [
             { text: "Approach and sing cheerfully", nextScene: "meetBai", isError: false },
             { text: "Keep hiding until the bai passes", nextScene: "missChance", isError: true }
