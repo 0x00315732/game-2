@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>Magic Coat — Choose</title>
+	<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&display=swap" rel="stylesheet">
+	<style>
+		/* ================================
+		1. GLOBAL STYLES AND BACKGROUND
+		================================ */
+		body {
+			font-family: 'Arial', sans-serif;
+			background-color: #8fbc8f;
+			background-image: linear-gradient(to bottom, #8fbc8f, #6b8e23);
+			color: #333;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			min-height: 100vh;
+			margin: 0;
+		}
+
+		/* ================================
+		2. CONTAINER AND TITLE
+		================================ */
+		#game-container {
+			background-color: #f5f5dc;
+			border: 10px solid #8b4513;
+			padding: 30px;
+			border-radius: 20px;
+			box-shadow: 0 8px 20px rgba(0, 0, 0, .4);
+			max-width: 650px;
+			width: 90%;
+			text-align: center;
+		}
+
+		h1 {
+			font-family: 'IM Fell English SC', serif;
+			color: #a0522d;
+			text-shadow: 2px 2px 3px rgba(255, 255, 255, .7);
+			margin-bottom: 18px;
+			font-size: 2.2em;
+		}
+
+		/* ================================
+		3. BUTTONS AND ELEMENTS
+		================================ */
+		.row {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 10px;
+			align-items: center;
+			margin: 8px 0;
+		}
+
+		@media (max-width:520px) {
+			.row {
+				grid-template-columns: 1fr;
+			}
+		}
+
+		label {
+			font-weight: 700;
+			color: #5b3a15;
+		}
+
+		select {
+			padding: 8px 10px;
+			border-radius: 10px;
+			border: 1px solid #8b4513;
+			background: #fffaf0;
+		}
+
+		button {
+			background: #ffd700;
+			color: #333;
+			border: 2px solid #ccac00;
+			padding: 12px 24px;
+			margin: 6px;
+			border-radius: 25px;
+			cursor: pointer;
+			font-weight: 700;
+			box-shadow: 0 4px #ccac00;
+		}
+
+		button:hover {
+			background: #ffea6b;
+		}
+
+		#result {
+			margin-top: 10px;
+			font-weight: 800;
+			display: inline-block;
+			padding: 8px 12px;
+			border-radius: 10px;
+			background: #fff6d5;
+			border: 2px solid #caa86a;
+		}
+
+		.ok {
+			color: #166534;
+			border-color: #7cc27f;
+			background: #eaffea;
+		}
+
+		.bad {
+			color: #7f1d1d;
+			border-color: #ef9a9a;
+			background: #ffecec;
+		}
+
+		.small {
+			color: #6b5c3a;
+			font-size: .9em;
+			margin-top: 8px;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="game-container">
+		<h1>The Magic Coat — Choose</h1>
+
+		<p>Select the correct position (1–5) for each fragment.</p>
+
+		<div class="row"><label for="selA">A</label>
+			<select id="selA">
+				<option value="">—</option>
+				<option>1</option>
+				<option>2</option>
+				<option>3</option>
+				<option>4</option>
+				<option>5</option>
+			</select>
+		</div>
+		<div class="row"><label for="selB">B</label>
+			<select id="selB">
+				<option value="">—</option>
+				<option>1</option>
+				<option>2</option>
+				<option>3</option>
+				<option>4</option>
+				<option>5</option>
+			</select>
+		</div>
+		<div class="row"><label for="selC">C</label>
+			<select id="selC">
+				<option value="">—</option>
+				<option>1</option>
+				<option>2</option>
+				<option>3</option>
+				<option>4</option>
+				<option>5</option>
+			</select>
+		</div>
+		<div class="row"><label for="selD">D</label>
+			<select id="selD">
+				<option value="">—</option>
+				<option>1</option>
+				<option>2</option>
+				<option>3</option>
+				<option>4</option>
+				<option>5</option>
+			</select>
+		</div>
+		<div class="row"><label for="selE">E</label>
+			<select id="selE">
+				<option value="">—</option>
+				<option>1</option>
+				<option>2</option>
+				<option>3</option>
+				<option>4</option>
+				<option>5</option>
+			</select>
+		</div>
+
+		<div>
+			<button id="checkBtn" type="button">Check</button>
+			<button id="resetBtn" type="button">Reset</button>
+		</div>
+
+		<div id="result" style="display:none;"></div>
+		<p class="small">Choose wisely — every position should be unique.</p>
+	</div>
+
+	<script>
+		/* Now includes a real correct-answer check and redirect */
+		const ids = { A: 'selA', B: 'selB', C: 'selC', D: 'selD', E: 'selE' };
+		const correct = { A: 4, B: 1, C: 3, D: 5, E: 2 }; // ✅ your answer key
+		const res = document.getElementById('result');
+
+		function getSelections() {
+			const pick = {};
+			for (const k of Object.keys(ids)) {
+				pick[k] = Number(document.getElementById(ids[k]).value || 0);
+			}
+			return pick;
+		}
+
+		function hasDuplicates(values) {
+			const nums = values.filter(Boolean);
+			return new Set(nums).size !== nums.length;
+		}
+
+		document.getElementById('checkBtn').onclick = () => {
+			const pick = getSelections();
+
+			// 1️⃣ Check empty fields
+			if (Object.values(pick).some(v => !v)) {
+				res.className = 'bad';
+				res.style.display = 'inline-block';
+				res.textContent = 'Please fill in all positions (A–E).';
+				return;
+			}
+
+			// 2️⃣ Check duplicates
+			if (hasDuplicates(Object.values(pick))) {
+				res.className = 'bad';
+				res.style.display = 'inline-block';
+				res.textContent = 'Duplicate positions detected — each number must be unique.';
+				return;
+			}
+
+			// 3️⃣ Compare with correct answers
+			let score = 0;
+			for (const key in correct) {
+				if (pick[key] === correct[key]) score++;
+			}
+
+			if (score === 5) {
+				res.className = 'ok';
+				res.style.display = 'inline-block';
+				res.textContent = '🎉 Correct! Redirecting...';
+				// 4️⃣ Redirect after a short delay (1.5 sec)
+				setTimeout(() => {
+					window.location.href = 'story.html'; // <— change this to your target page
+				}, 1500);
+			} else {
+				res.className = 'bad';
+				res.style.display = 'inline-block';
+				res.textContent = `Matched positions: ${score}/5 — try again.`;
+			}
+		};
+
+		document.getElementById('resetBtn').onclick = () => {
+			for (const id of Object.values(ids)) document.getElementById(id).value = "";
+			res.style.display = 'none';
+		};
+	</script>
+
+</body>
+
+</html>

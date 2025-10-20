@@ -132,3 +132,31 @@ h1 {
     transition: background-color 0.3s, transform 0.1s;
     box-shadow: 0 4px #ccac00; /* Эффект 3D */
 }
+
+/* 5. ТЕКСТ И КНОПКИ — ДОПОЛНЕНИЕ */
+.option-button--big {
+    font-size: 1.4em;        /* крупнее шрифт */
+    padding: 18px 36px;       /* больше отступы */
+    border-radius: 35px;      /* мягче форма */
+    box-shadow: 0 6px #ccac00;/* чуть «выше» над плоскостью */
+    display: inline-block;
+    min-width: 280px;         /* чтобы реально выглядела большой */
+}
+
+.option-button:hover {
+    background-color: #ffdf33;
+}
+
+.option-button:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px #ccac00;
+}
+
+.option-button {
+    text-decoration: none; /* убираем подчёркивание */
+    display: inline-block; /* чтобы реагировала как кнопка */
+}
+
+.option-button:visited {
+    color: #333; /* сохраняем цвет после перехода */
+}
